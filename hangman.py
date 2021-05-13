@@ -1,16 +1,16 @@
 import random
 
-def wordstwo():
+def wordsrack():
     list_of_words=("nandanunni","computer","ramapuram","beefbiryani")
     return random.choice(list_of_words)
 
 def guessword():
-    word = wordstwo()
+    word = wordsrack()
     ln = len(word)
     letters=[]
     k=0
-    newword=[]
     i=0
+    newword=[]
     for i in range(ln):
         if i == 0 or i==3 or i==4 or i==6 or i==7:
             newword.append("_")
@@ -30,7 +30,8 @@ def comparer(word,new):
 def thegame():
     w,nw,l,ln=guessword()
     life = 4
-    print("Your word is : %s"%nw)
+    points=0
+    print("\nYour word is : %s"%nw)
     while life > 0:
         status = False
         i=0
@@ -50,29 +51,37 @@ def thegame():
 
             print("Right guess!!")
             if comparer(w,nw)==0:
-                print("your word : %s"%nw)
+                print("\nyour word : %s"%nw)
                 print ("you have %d life left !"%life)
+                print("\n")
             else:
-                print("Congrats you've guessed the word correctly!! ")
+                print("\nCongrats you've guessed the word correctly!! ")
                 print("Your word was %s"%w)
                 print("You guessed with %d lives left"%life)
+                points=5
                 break
         else:
             life=life-1
             if comparer(w,nw)==0:
                print("Wrong guess!!")
-               print("Your word : %s"%nw)
+               print("\nYour word : %s"%nw)
                print("you have %d lives left"%life)
+               print("\n")
         if(life==0):
             print("Game over!!")
             print("your word was %s"%w)
+            points=-5
+    return points
 
 
-print("!!!!!!!HANGMAN GAME!!!!!!!")
+print("__________HANGMAN GAME__________\n")
 name=input("Enter your name:")
-print("You are given a word with some missing letters,you are supposed to guess every letter in that word.\nYou are given 4 lives for mistakes. \nGuess the word before you DIE.....HAHAHAHAHA")
+print("\n\nYou are given a word with some missing letters,you are supposed to guess every letter in that word.\nYou are given 4 lives for mistakes. \nGuess the word before you DIE.....HAHA\n")
+print("Ps:you'll recieve points for each round you win....\n\n")
 c='y'
+points=0
 while c=='y' :
-    thegame()
-    c=input("Do you want to play again : (y/n)")
+    points=points+thegame()
+    print("\n\nYou're totalpoints:%d"%points)
+    c=input("\nDo you want to play again : (y/n)")
     c.lower()
