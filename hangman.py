@@ -41,7 +41,7 @@ def thegame():
         for j in range (5):
             if (l[j] == g):
                 status = True
-
+                l[j]=j
 
         if (status == True ):
             for i in range (ln):
