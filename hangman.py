@@ -1,4 +1,7 @@
+#Python program for hangman game
+import os
 import random
+import time
 
 def wordsrack():
     list_of_words=("nandanunni","computer","ramapuram","beefbiryani")
@@ -73,15 +76,23 @@ def thegame():
             points=-5
     return points
 
+def main():
+    os.system('cls')
+    print("\t\tHANGMAN GAME\n")
+    print("\n\nInstruction:")
+    print("\nYou are given a word with some missing letters,you are supposed to guess every letter in that word.\nYou are given 4 lives for mistakes. \nGuess the word before you DIE.....HAHA\n")
+    print("Ps:you'll recieve points for each round you win....\n\n")
+    c='y'
+    points=0
+    while c=='y' :
+        points=points+thegame()
+        if(points<0):
+            points=0
+        print("\n\nYou're totalpoints:%d"%points)
+        c=input("\nDo you want to play again (y/n) : ")
+        c.lower()
+    print("\n\n\t\tThank you for playing!!!")
+    time.sleep(1)
 
-print("__________HANGMAN GAME__________\n")
-name=input("Enter your name:")
-print("\n\nYou are given a word with some missing letters,you are supposed to guess every letter in that word.\nYou are given 4 lives for mistakes. \nGuess the word before you DIE.....HAHA\n")
-print("Ps:you'll recieve points for each round you win....\n\n")
-c='y'
-points=0
-while c=='y' :
-    points=points+thegame()
-    print("\n\nYou're totalpoints:%d"%points)
-    c=input("\nDo you want to play again : (y/n)")
-    c.lower()
+if __name__ == "__main__":
+    main()

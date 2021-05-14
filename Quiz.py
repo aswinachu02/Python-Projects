@@ -1,5 +1,6 @@
 import random
 import os
+import time
 
 def title():
     os.system('cls')
@@ -116,8 +117,7 @@ def main():
          ch=input("Do you want to play again: ")
          ch=ch.lower()
     print("\n\nYour total score is %d points"%points)
-    print("\n\n\tThank you for playing...")
-    pause()
+    time.sleep(1)
     
 
 if __name__ == "__main__":
